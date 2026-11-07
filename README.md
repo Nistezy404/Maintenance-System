@@ -1,84 +1,194 @@
-# 🧰 Windows Maintenance Toolkit
+# 🛠️ Maintenance System
 
-Toolkit interativo para manutenção, limpeza e diagnóstico do Windows 10/11. Inclui operações do Microsoft Defender, limpeza cautelosa de arquivos temporários e reparo de arquivos do sistema.
+<div align="center">
 
-## 🚀 Funcionalidades
+### Windows & Linux Maintenance and Diagnostics Toolkit
 
-- 🛡️ Atualização das definições do Microsoft Defender
-- 🔍 Verificação rápida ou completa com o Microsoft Defender
-- 🧹 Remoção de arquivos temporários com mais de 7 dias
-- ⚙️ Reparo da imagem e dos arquivos do Windows com DISM e SFC
-- 📊 Diagnóstico de versão do Windows, espaço em disco, serviços parados e status do Defender
-- 📋 Registro persistente das atividades
-- 🎨 Menu interativo no PowerShell, iniciado diretamente ou pelo Prompt de Comando
-- ✅ Confirmação antes de iniciar verificações, limpeza ou reparos
+![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-Debian%2013-A81D33?style=for-the-badge&logo=debian&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnubash&logoColor=white)
 
-## 📦 Requisitos
+**Automation • System Administration • Troubleshooting • Security • Diagnostics**
 
-- Windows 10 ou Windows 11
-- Windows PowerShell 5.1 ou superior
-- Microsoft Defender disponível para as funções de antivírus
-- Permissão de Administrador para atualizar definições, iniciar verificações e executar reparos do sistema
+[Repository](https://github.com/Nistezy404/Maintenance-System) | [Report an Issue](https://github.com/Nistezy404/Maintenance-System/issues)
 
-Não é necessário instalar módulos adicionais para as funções principais.
+</div>
 
-## ▶️ Como usar
+---
 
-Mantenha os arquivos `.ps1` e `.cmd` na mesma pasta.
+## 📖 Overview
 
-### 🔹 PowerShell
+**Maintenance System** is a collection of interactive scripts designed to automate operating system maintenance, troubleshooting, security checks and system diagnostics on Windows and Debian-based Linux environments.
 
-Abra o PowerShell na pasta do toolkit e execute:
+The project aims to reduce repetitive administrative tasks, simplify preventive maintenance and support IT infrastructure operations using PowerShell, Batch and Bash.
 
-```powershell
-.\Toolkit-Manutencao-Windows.ps1
+## 🚀 Features
+
+### 🪟 Windows Maintenance
+
+| Feature | Description |
+|---|---|
+| 🛡️ Defender Updates | Update Microsoft Defender security intelligence. |
+| 🔍 Antivirus Scanning | Perform quick and full scans. |
+| 🧹 Temporary File Cleanup | Remove temporary files older than seven days. |
+| 🔧 System Repair | Execute DISM RestoreHealth and SFC /scannow. |
+| 📊 System Diagnostics | Check OS information, disk usage, stopped services and Defender status. |
+| 📋 Logging | Maintain persistent activity records. |
+| ⚙️ Interactive Menu | Execute operations from a terminal menu. |
+
+### 🐧 Linux Maintenance
+
+Target environment: **Debian 13 (Trixie)**.
+
+| Feature | Description |
+|---|---|
+| 📦 Package Management | Update packages and repair package configuration. |
+| 🧹 System Cleanup | Remove unused packages, caches and old temporary files. |
+| 📜 Journal Maintenance | Apply systemd journal retention limits. |
+| 📊 Diagnostics | Inspect disk, memory, uptime and failed services. |
+| 🔐 Integrity Checks | Check package integrity using debsums when installed. |
+| 🕒 Shell History | Optional shell-history cleanup. |
+| 🔄 Full Maintenance | Execute update and cleanup operations in sequence. |
+| 📝 Logging | Record terminal output in a log file. |
+
+## 🧰 Technologies
+
+**Windows:** PowerShell 5.1+, Batch, Microsoft Defender, DISM and SFC.
+
+**Linux:** Bash, APT, dpkg, systemd, journalctl and debsums.
+
+## 📂 Project Structure
+
+```text
+Maintenance-System/
+├── Maintenance-System-CMD.cmd
+├── Maintenance-Windows-Powershell.ps1
+├── manutenção_limpeza.sh
+└── README.md
 ```
 
-Para funções que exigem privilégios elevados, abra o PowerShell como Administrador antes de executar o script.
+## 📥 Installation
 
-### 🔹 Prompt de Comando (CMD)
+Clone the repository:
 
-Execute `Toolkit-Manutencao-Windows.cmd` pelo Explorador de Arquivos ou pelo CMD. Ele abre o menu PowerShell do toolkit. Para tarefas administrativas, inicie o CMD como Administrador.
+```bash
+git clone https://github.com/Nistezy404/Maintenance-System.git
+cd Maintenance-System
+```
 
-## 📋 Opções do menu
+## 🪟 Windows Usage
 
-1. Atualizar assinaturas do Microsoft Defender
-2. Iniciar verificação rápida
-3. Iniciar verificação completa
-4. Limpar temporários antigos
-5. Reparar a imagem e os arquivos do Windows (DISM + SFC)
-6. Exibir diagnóstico do sistema
-0. Sair
+**Requirements:** Windows 10/11, PowerShell 5.1+ and Microsoft Defender for antivirus functions.
 
-## 📊 Logs
+Open PowerShell in the project directory and execute:
 
-As atividades são registradas em:
+```powershell
+.\Maintenance-Windows-Powershell.ps1
+```
+
+Some operations require Administrator privileges.
+
+**CMD launcher:** `Maintenance-System-CMD.cmd` is also provided. Before using it, correct its reference from `Toolkit-Manutencao-Windows.ps1` to `Maintenance-Windows-Powershell.ps1`.
+
+### Interactive Menu
+
+```text
+========= TOOLKIT DE MANUTENÇÃO WINDOWS =========
+
+1) Atualizar assinaturas do Microsoft Defender
+2) Verificação rápida do Defender
+3) Verificação completa do Defender
+4) Limpar temporários antigos
+5) Reparar imagem e arquivos (DISM + SFC)
+6) Diagnóstico do sistema
+0) Sair
+```
+
+**Log location:**
 
 ```text
 %LOCALAPPDATA%\ToolkitManutencao\toolkit.log
 ```
 
-## 🔒 Segurança e operação
+## 🐧 Linux Usage
 
-- O toolkit não desativa o Microsoft Defender nem remove itens da quarentena.
-- A limpeza considera arquivos temporários com mais de 7 dias e ignora arquivos em uso ou sem permissão.
-- O script solicita confirmação antes de iniciar as operações que podem alterar o sistema ou remover arquivos.
-- Verificações completas e reparos podem levar bastante tempo.
-- O toolkit não apaga o histórico do terminal.
-- Execute como Administrador somente quando precisar das funções que exigem elevação.
+**Requirements:** Debian 13, Bash, APT, systemd and root privileges. `debsums` is optional.
 
-## 🧩 Estrutura do projeto
+Execute:
 
-```text
-.
-├── Toolkit-Manutencao-Windows.ps1
-├── Toolkit-Manutencao-Windows.cmd
-└── README.md
+```bash
+sudo bash ./manutenção_limpeza.sh
 ```
 
-## 💡 Casos de uso
+### Interactive Menu
 
-- Manutenção de computadores pessoais com Windows
-- Atualização e verificação do Microsoft Defender
-- Diagnóstico básico de disco, serviços e sistema
-- Reparação de componentes do Windows
+```text
+========= TOOLKIT DE MANUTENÇÃO =========
+
+1) Atualizar sistema
+2) Limpar sistema
+3) Limpar logs
+4) Diagnóstico do sistema
+5) Verificar integridade
+6) Limpar histórico
+7) Manutenção completa
+0) Sair
+```
+
+**Log location:**
+
+```text
+/var/log/toolkit_manutencao.log
+```
+
+## 🔒 Security Considerations
+
+These scripts execute administrative operations that may modify system configuration or delete files.
+
+- Review the source code before execution.
+- Back up important data before maintenance.
+- Test cleanup routines in a controlled environment.
+- Use elevated privileges only when necessary.
+- Review retention and audit requirements before deleting logs or shell history.
+- Avoid running full maintenance on critical systems without reviewing each operation.
+
+**Important:** The Linux cleanup routine removes cached files, and its full maintenance operation includes shell-history cleanup. The Windows cleanup may recursively remove old temporary directories. Review these operations before using them in production.
+
+## 💼 Use Cases
+
+- IT Support N1/N2
+- Windows and Linux Administration
+- Endpoint Maintenance
+- Infrastructure Troubleshooting
+- Security Operations Support
+- Homelabs and Technical Training
+- Shell Scripting and Automation
+
+## 🗺️ Future Improvements
+
+- [ ] Add dry-run support for cleanup routines.
+- [ ] Add confirmations before destructive Linux operations.
+- [ ] Improve error handling and exit-code validation.
+- [ ] Introduce configurable cleanup policies.
+- [ ] Generate structured diagnostic reports.
+- [ ] Add automated tests and static analysis.
+- [ ] Integrate ShellCheck and PSScriptAnalyzer.
+
+## 👨‍💻 Author
+
+**Mauricio Robert**
+
+Cybersecurity Student | IT Infrastructure | Security Research & Development
+
+[GitHub](https://github.com/Nistezy404) | [LinkedIn](https://www.linkedin.com/in/mauricio-robert-9b79b3309/)
+
+---
+
+<div align="center">
+
+**Built for learning, automation and practical system administration.**
+
+⭐ If this project is useful, consider starring the repository.
+
+</div>
