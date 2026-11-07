@@ -1,98 +1,84 @@
-# 🧰 Linux Maintenance Toolkit
+# 🧰 Windows Maintenance Toolkit
 
-Toolkit avançado em Bash para manutenção, limpeza e diagnóstico de sistemas Linux (focado em Debian 12/13). Projetado com boas práticas de administração, segurança e observabilidade.
-
----
+Toolkit interativo para manutenção, limpeza e diagnóstico do Windows 10/11. Inclui operações do Microsoft Defender, limpeza cautelosa de arquivos temporários e reparo de arquivos do sistema.
 
 ## 🚀 Funcionalidades
 
-* 🔄 Atualização segura do sistema (`apt-get`)
-* 🧹 Limpeza de cache, pacotes obsoletos e temporários
-* 📜 Gerenciamento de logs com `journalctl`
-* 🔍 Diagnóstico completo do sistema:
-
-  * Uso de disco
-  * Memória
-  * Carga
-  * Serviços com falha
-* 🛡️ Verificação de integridade (`debsums`)
-* 🧠 Limpeza de histórico
-* ⚙️ Execução completa automatizada (`--full`)
-* 📋 Logging persistente para auditoria
-* 🎨 Interface interativa via menu
-
----
+- 🛡️ Atualização das definições do Microsoft Defender
+- 🔍 Verificação rápida ou completa com o Microsoft Defender
+- 🧹 Remoção de arquivos temporários com mais de 7 dias
+- ⚙️ Reparo da imagem e dos arquivos do Windows com DISM e SFC
+- 📊 Diagnóstico de versão do Windows, espaço em disco, serviços parados e status do Defender
+- 📋 Registro persistente das atividades
+- 🎨 Menu interativo no PowerShell, iniciado diretamente ou pelo Prompt de Comando
+- ✅ Confirmação antes de iniciar verificações, limpeza ou reparos
 
 ## 📦 Requisitos
 
-* Debian 12/13 ou derivados
-* Permissões de root
-* (Opcional) `debsums`
+- Windows 10 ou Windows 11
+- Windows PowerShell 5.1 ou superior
+- Microsoft Defender disponível para as funções de antivírus
+- Permissão de Administrador para atualizar definições, iniciar verificações e executar reparos do sistema
 
-Instalar dependência opcional:
-
-```bash
-sudo apt-get install debsums -y
-```
-
----
+Não é necessário instalar módulos adicionais para as funções principais.
 
 ## ▶️ Como usar
 
-### 🔹 Modo interativo
+Mantenha os arquivos `.ps1` e `.cmd` na mesma pasta.
 
-```bash
-chmod +x toolkit.sh
-sudo ./toolkit.sh
+### 🔹 PowerShell
+
+Abra o PowerShell na pasta do toolkit e execute:
+
+```powershell
+.\Toolkit-Manutencao-Windows.ps1
 ```
 
-### 🔹 Execução completa (automática)
+Para funções que exigem privilégios elevados, abra o PowerShell como Administrador antes de executar o script.
 
-```bash
-sudo ./toolkit.sh --full
-```
+### 🔹 Prompt de Comando (CMD)
 
----
+Execute `Toolkit-Manutencao-Windows.cmd` pelo Explorador de Arquivos ou pelo CMD. Ele abre o menu PowerShell do toolkit. Para tarefas administrativas, inicie o CMD como Administrador.
+
+## 📋 Opções do menu
+
+1. Atualizar assinaturas do Microsoft Defender
+2. Iniciar verificação rápida
+3. Iniciar verificação completa
+4. Limpar temporários antigos
+5. Reparar a imagem e os arquivos do Windows (DISM + SFC)
+6. Exibir diagnóstico do sistema
+0. Sair
 
 ## 📊 Logs
 
-Todas as ações são registradas em:
+As atividades são registradas em:
 
+```text
+%LOCALAPPDATA%\ToolkitManutencao\toolkit.log
 ```
-/var/log/toolkit_manutencao.log
-```
 
----
+## 🔒 Segurança e operação
 
-## 🔒 Segurança
+- O toolkit não desativa o Microsoft Defender nem remove itens da quarentena.
+- A limpeza considera arquivos temporários com mais de 7 dias e ignora arquivos em uso ou sem permissão.
+- O script solicita confirmação antes de iniciar as operações que podem alterar o sistema ou remover arquivos.
+- Verificações completas e reparos podem levar bastante tempo.
+- O toolkit não apaga o histórico do terminal.
+- Execute como Administrador somente quando precisar das funções que exigem elevação.
 
-* Execução restrita a root
-* Uso de `set -euo pipefail`
-* Evita remoção manual agressiva de logs
-* Operações seguras e controladas
+## 🧩 Estrutura do projeto
 
----
-
-## 🧩 Estrutura do Projeto
-
-```
+```text
 .
-├── toolkit.sh
+├── Toolkit-Manutencao-Windows.ps1
+├── Toolkit-Manutencao-Windows.cmd
 └── README.md
 ```
 
----
+## 💡 Casos de uso
 
-## 💡 Casos de Uso
-
-* Administração de sistemas Linux
-* Laboratórios de cibersegurança (Blue Team / SOC)
-* Automação de manutenção
-* Estudos de observabilidade
-* Ambientes pessoais e servidores
-
----
-
-## 📜 Licença
-
-Este projeto é open-source e pode ser utilizado livremente para fins educacionais e profissionais.
+- Manutenção de computadores pessoais com Windows
+- Atualização e verificação do Microsoft Defender
+- Diagnóstico básico de disco, serviços e sistema
+- Reparação de componentes do Windows
